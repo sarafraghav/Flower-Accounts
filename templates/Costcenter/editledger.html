@@ -1,0 +1,256 @@
+
+
+
+ <!-- ============================================================== -->
+ {% extends 'base.html' %}
+{% load static %}
+{% block content %}  
+ <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor">Cost Centers</h3>
+          
+            </div>
+            <div class="col-md-7 col-4 align-self-center">
+                <div class="d-flex m-t-10 justify-content-end">
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text- ">Edit Cost Centers</h6>
+                      
+                    </div>
+                    <div class="card-body">
+                                           
+                             <form action="{% url 'editcost_centers' stockid=form.instance.pk %}" method="post">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                               
+                              <button type="submit" value='save' name='save'>Save</button>
+                              <input type="submit" name="save" value="delete" onclick="return confirm('Do you really want to delete the stock?');" />
+                              
+                            </form>                        
+                    </div>
+                </div>
+                
+          
+               
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <a style='color: white;' type="button" class="pull-right btn waves-effect waves-light btn-success" href="{% url 'addreceipt' %}">Add</a>
+                        <h4 class="card-title">Receipt Data</h4>
+                        <div class="table-responsive m-t-40">
+                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                 <tr>
+                                   
+                                    
+                                       <th style='text-transform: uppercase;'>Name</th>
+                                       <th style='text-transform: uppercase;'>Ledger</th>
+                                       <th style='text-transform: uppercase;'>Amount</th>
+                                       <th style='text-transform: uppercase;'>Date</th>
+                                  
+                                        
+                                 </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                 
+                                        
+                                        <th style='text-transform: uppercase;'>Name</th>
+                                        <th style='text-transform: uppercase;'>Ledger</th>
+                                        <th style='text-transform: uppercase;'>Amount</th>
+                                        <th style='text-transform: uppercase;'>Date</th>
+                                      
+                                          
+    
+                                     </tr>
+                                </tfoot>
+                                <tbody>
+
+                                    {% for item in othr %}
+                                    <tr>
+                             
+                                        <td><a href='/Receipt/edit/{{ item.id }}/'>{{ item.Name }}</a></td>
+                                        <td>{{ item.vtype }}</td>
+                                        <td>{{ item.Amount }}</td>
+                                        <td>{{ item.Date }}</td>
+                        
+                                  
+                                    
+                                    </tr>
+                                        {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                       
+
+
+
+
+                    </div>
+                </div>
+          
+               
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <a style='color: white;' type="button" class="pull-right btn waves-effect waves-light btn-success" href="{% url 'addpurchase' %}">Add</a>
+                        <h4 class="card-title">Purchase Data</h4>
+                        <div class="table-responsive m-t-40">
+                            <table id="example24" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                 <tr>
+                                   
+                                    
+                                       <th style='text-transform: uppercase;'>Name</th>
+                                       <th style='text-transform: uppercase;'>Ledger</th>
+                                       <th style='text-transform: uppercase;'>Amount</th>
+                                       <th style='text-transform: uppercase;'>Date</th>
+                                  
+                                        
+                                 </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                 
+                                        
+                                        <th style='text-transform: uppercase;'>Name</th>
+                                        <th style='text-transform: uppercase;'>Ledger</th>
+                                        <th style='text-transform: uppercase;'>Amount</th>
+                                        <th style='text-transform: uppercase;'>Date</th>
+                                      
+                                          
+    
+                                     </tr>
+                                </tfoot>
+                                <tbody>
+
+                                    {% for item in stock %}
+                                    <tr>
+                             
+                                        <td><a href='/Purchase/edit/{{ item.id }}/'>{{ item.Name }}</a></td>
+                                        <td>{{ item.Ledger.Name }}</td>
+                                        <td>{{ item.Amount }}</td>
+                                        <td>{{ item.Date }}</td>
+                        
+                                  
+                                    
+                                    </tr>
+                                        {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                       
+
+
+
+
+                    </div>
+                </div>
+          
+               
+            </div>
+        </div>
+       
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="m-0 font-weight-bold text- ">Invoices</h2>
+                        <div class="table-responsive m-t-40">
+                            <table id="example223" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                        
+                                            <th>Name</th>
+                                            <th>Cost Center</th>
+                                            <th>Number of Orders</th>
+                                            <th>Invoice Type</th>
+                                            <th>Amount</th>
+                                          
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                        
+                                        <th>Name</th>
+                                        <th>Cost Center</th>
+                                        <th>Number of Orders</th>
+                                        <th>Invoice Type</th>
+                                        <th>Amount</th>
+                                      
+                                </tfoot>
+                                <tbody>
+                                    {% for item in invc %}
+                                      
+                                    <tr>
+                                    
+                                        <td><a href='/invoice/edit/{{ item.id }}/'>{{ item.name }}</a></td>
+                                        <td>{{ item.Cost_Center.Name }}</td>
+                                        <td>{{ item.numberoforders }}</td>
+                                        <td>{{ item.Itype }}</td>
+                                        <td>{{ item.amount }}</td>
+                                     
+                                    
+                                    </tr>
+                                        {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+          
+               
+            </div>
+        </div>
+        <!-- Row -->
+        <!-- Row -->
+      
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <footer class="footer"> © 2021 Payal Exim Concern </footer>
+        <!-- ============================================================== -->
+    </div>
+</div>
+
+
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+{% endblock %}

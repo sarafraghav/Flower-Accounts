@@ -1,0 +1,139 @@
+
+
+
+ <!-- ============================================================== -->
+ {% extends 'base.html' %}
+{% load static %}
+{% block content %}  
+ <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor">Invoice Maker</h3>
+          
+            </div>
+            <div class="col-md-7 col-4 align-self-center">
+                <div class="d-flex m-t-10 justify-content-end">
+                    <a style='color: white;' type="button" class="btn waves-effect waves-light btn-success" href="{% url 'goodsreturn' item.id%}">Goods Return</a>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text- ">View Invoice</h6>
+                      
+                    </div>
+                    <div class="card-body">
+                        <h3 class="m-0 text- ">Final :  {{item.amount}}   </h3>    
+                        <h3 class="m-0 text- "> Customer : {{item.Cost_Center.Name}} </h3>   
+                     
+                            <table id="example23" class="table table-bordered" width="100%" cellspacing="0">
+
+                              <thead>
+                                  <tr>
+                                  
+                                      <th>ID</th>
+                                      <th>Name</th>
+                                      <th>Model</th>
+                                      <th>Size</th>
+                                      <th>Quantity</th>
+                                      <th>Price</th>
+                                      <th>Warehouse</th>
+                                    
+                                  </tr>
+                              </thead>
+                              <tfoot>
+                                  <tr>
+                                      
+                                      <th>ID</th>
+                                      <th>Name</th>
+                                      <th>Model</th>
+                                      <th>Size</th>
+                                      <th>Quantity</th>
+                                      <th>Price</th>
+                                      <th>Warehouse</th>
+                                      
+                                  </tr>
+                              </tfoot>
+                              <tbody>
+
+                                  {% for ite in stock %}
+                         
+                                      
+                                  <tr>
+
+                                      <td>{{ ite.stock_id }}</td>
+                                      <td>{{ ite.Name }}</td>
+                                      <td>{{ ite.Model }}</td>
+                                      <td>{{ ite.Size }}</td>
+                                      <td>{{ ite.Quantity }}</td>
+                                      <td>{{ ite.Price }}</td>
+                                      <td>{{ ite.Warehouse }}</td>
+                                  
+        
+                                    
+                                  </tr>
+                                 
+                                  {% endfor %}
+                             
+                              </tbody>
+
+  
+                             
+                              
+                          </table>
+
+
+                       
+                        
+                          
+                    </div>
+                </div>
+                
+          
+               
+            </div>
+        </div>
+
+       
+        <!-- Row -->
+       
+        <!-- Row -->
+        <!-- Row -->
+      
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <footer class="footer"> © 2021 Payal Exim Concern </footer>
+        <!-- ============================================================== -->
+    </div>
+</div>
+
+
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+{% endblock %}

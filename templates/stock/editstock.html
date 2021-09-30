@@ -1,0 +1,86 @@
+
+
+
+ <!-- ============================================================== -->
+ {% extends 'base.html' %}
+{% load static %}
+{% block content %}  
+ <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor">Stock</h3>
+          
+            </div>
+            <div class="col-md-7 col-4 align-self-center">
+                <div class="d-flex m-t-10 justify-content-end">
+                    <div class="d-flex m-r-20 m-l-10 hidden-md-down">
+                        <a style='color: white;' type="button" class="btn waves-effect waves-light btn-success" href="{% url 'stocktransfer' form.instance.id  %}">Stock Transferer</a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text- ">Edit Stock</h6>
+                      
+                    </div>
+                    <div class="card-body">
+                                           
+                             <form action="{% url 'editstock' stockid=form.instance.pk %}" method="post">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                               
+                              <button type="submit" value='save' name='save'>Save</button>
+                              <input type="submit" name="save" value="delete" onclick="return confirm('Do you really want to delete the stock?');" />
+                              
+                            </form>                        
+                    </div>
+                </div>
+                
+          
+               
+            </div>
+        </div>
+
+        
+        <!-- Row -->
+        <!-- Row -->
+      
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <footer class="footer"> © 2021 Payal Exim Concern </footer>
+        <!-- ============================================================== -->
+    </div>
+</div>
+
+
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+{% endblock %}

@@ -1,0 +1,117 @@
+ <!-- ============================================================== -->
+ {% extends 'base.html' %}
+{% load static %}
+{% block content %}  
+ <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor">Dashboard</h3>
+          
+            </div>
+            <div class="col-md-7 col-4 align-self-center">
+                <div class="d-flex m-t-10 justify-content-end">
+                    <div class="d-flex m-r-20 m-l-10 hidden-md-down">  
+                      <button type="button" class="btn waves-effect waves-light btn-success">Success</button>
+                    </div>
+                    <div class="d-flex m-r-20 m-l-10 hidden-md-down">
+                        <a style='color: white;' type="button" class="btn waves-effect waves-light btn-success" href="{% url 'addstock'%}">Add Stock</a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Stock Data</h4>
+                        <div class="table-responsive m-t-40">
+                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Model</th>
+                                            <th>Size</th>
+                                            <th>Color</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                            <th>Warehouse</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Model</th>
+                                            <th>Size</th>
+                                            <th>Color</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+                                            <th>Warehouse</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    {% for item in stock %}
+                                      
+                                    <tr>
+                                        <td>{{ item.id }}</td>
+                                        <td><a href='/stock/edit/{{ item.id }}/'>{{ item.Name }}</a></td>
+                                        <td>{{ item.Model }}</td>
+                                        <td>{{ item.Size }}</td>
+                                        <td>{{ item.Color }}</td>
+                                        <td>{{ item.Quantity }}</td>
+                                        <td>{{ item.Price }}</td>
+                                        <td>{{ item.Warehouse.name }}</td>
+                                    
+                                    </tr>
+                                        {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+          
+               
+            </div>
+        </div>
+        <!-- Row -->
+       
+        <!-- Row -->
+        <!-- Row -->
+      
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <footer class="footer"> © 2021 Payal Exim Concern </footer>
+        <!-- ============================================================== -->
+    </div>
+</div>
+
+
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+{% endblock %}

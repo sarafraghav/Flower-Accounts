@@ -1,0 +1,103 @@
+{% load static %}
+{% if request.user.cauth and request.user.fyauth %}
+<!DOCTYPE html>
+<html lang="en"style="min-height: 100%;">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/favicon.png' %}">
+        <title>Payal Exim Concern</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- chartist CSS -->
+        <link href="{% static 'assets/plugins/chartist-js/dist/chartist.min.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/plugins/chartist-js/dist/chartist-init.css' %}" rel="stylesheet">
+        <link href="{% static 'assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css' %}" rel="stylesheet">
+        <!--This page css - Morris CSS -->
+        <link href="{% static 'assets/plugins/c3-master/c3.min.css' %}" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <!-- You can change the theme colors from here -->
+        <link href="{% static 'css/colors/green-dark.css' %}" id="theme" rel="stylesheet">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    </head>
+
+    <style>
+        html {
+   margin: 0px;
+   height: 100%;
+   width: 100%;
+}
+
+body {
+   margin: 0px;
+   min-height: 100%;
+   width: 100%;
+}
+    </style>
+
+<body class="bg-gradient-primary" style="background-color:black; margin: 0; min-height: 100%;">
+
+    <div class="container">
+        
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-md-9" style=" max-width: 50%;" >
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            
+                            <div class="col-lg-6" style='max-width: 100%;flex: 0 0 100%;'>
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Payal Exim Concern</h1>
+                                    </div>
+                            
+                                    <hr>
+                                    <div class="text-center">
+                               <a class="small" href="{% url 'dlsheet' %}"><button class="btn btn-primary btn-user btn-block" type="submit">Dasboard</button></a>
+                               
+                               
+                                    </div>
+                                
+                               
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+
+
+</body>
+</html>
+{% elif not request.user.cauth %}
+
+<meta http-equiv="refresh" content="0; URL={% url 'cauth'%}" />
+
+{% elif not request.user.fyauth %}
+
+<meta http-equiv="refresh" content="0; URL={% url 'fyauth'%}" />
+
+{% endif %}

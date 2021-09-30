@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% block content %}  
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+   
+{{sidebar|safe}}
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+               
+        <nav class="navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+            <center>
+<h1 class="h3 mb-2 text-gray-800" style="padding-top: 1.5%;" >Customers</h1>
+</center>
+</nav>
+
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+             
+                   
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text- text-center">Edit Customers</h6>
+                        </div>
+                        <div class="card-body">
+                            {% if messages %}
+                                 <ul class="messages">
+                                 {% for message in messages %}
+                                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                 {% endfor %}
+                                 
+                                 </ul>
+                                 {% endif %}
+                                 <form action="{% url 'editcategory' stockid=form.instance.pk %}" method="post">
+                                      {% csrf_token %}
+                                      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Name</th>
+                                                
+                                            
+                                            </tr>
+                                        </thead>
+                                   
+                                        <tbody>
+    
+                                         
+                                            <tr>
+                                                
+                                               <td>Edit Name : </td>
+                                                <td>{{ form.name }}</td>
+                                           
+                                                <td><button type="submit" value='save' name='save'>Save</button></td>
+                                 <td> <input type="submit" name="save" value="delete" onclick="return confirm('Do you really want to delete the Customer?');" /></td>
+                                            
+                                            </tr>
+                                               
+                                        </tbody>
+                                        
+                                    </table>
+
+                                  
+                                </form>
+
+
+                                <h1 class="h3 mb-2 text-gray-800">Vendors</h1>
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="table_id" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Order</th>
+                                                <th>No.of Orders</th>
+                                                
+                                              
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Order</th>
+                                                <th>No.of Orders</th>
+                                            </tr>
+                                        </tfoot>
+                                        <tbody>
+    
+                                            {% for item in items %}
+                                            <tr>
+                                              
+                                                <td><a href='/invoice/edit/{{ item.id }}/'>{{ item.id}}</a></td>
+                                                <td>{{ item.Name }}</td>
+                                           
+                                               
+                                        
+                                            
+                                            </tr>
+                                                {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+
+
+
+
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Stock Management</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+
+</body>
+{% endblock %}
+<script>
+$(document).ready(function() {
+  $('#datatable').DataTable(
+    {
+                        pageLength: 10,
+                        filter: true,
+                        deferRender:    true,
+                        scrollY:        200,
+                        scrollCollapse: true,
+                        scroller:       true
+                    }
+  );
+});
+
+
+</script>
+<script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+</html>

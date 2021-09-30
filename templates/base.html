@@ -1,0 +1,332 @@
+{% load static %}
+
+{% if request.user.cauth and request.user.fyauth %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/images/logo-light-icon.png' %}">
+    <title>Payal Exim Concern</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- chartist CSS -->
+    <link href="{% static 'assets/plugins/chartist-js/dist/chartist.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/plugins/chartist-js/dist/chartist-init.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css' %}" rel="stylesheet">
+    <!--This page css - Morris CSS -->
+    <link href="{% static 'assets/plugins/c3-master/c3.min.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{% static 'css/colors/green-dark.css' %}" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+ 
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <!-- Logo icon --><b>
+                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                            <!-- Dark Logo icon -->
+                            <!-- Light Logo icon -->
+                            <img src="{% static 'assets/images/logo-light-icon.png' %}" alt="homepage" class="light-logo" />
+                            
+                        </b>
+                        <!--End Logo icon -->
+                        <!-- Logo text --><span>
+                         <!-- dark Logo text -->
+                         <!-- Light Logo text -->    
+                        
+                         <img src="{% static 'assets/images/logo-light-text.png' %}" class="light-logo" alt="homepage" /></span> </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav mr-auto mt-md-0">
+                        <!-- This is  -->
+                        <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="mdi mdi-menu"></i></a> </li>
+                        <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down text-muted waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <li class="nav-item"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" title="Change Company" href="{% url 'cd'%}">{{request.user.cauth.company.name}}</a> </li>
+                        <li class="nav-item"> <a class="nav-link hidden-sm-down text-muted waves-effect waves-dark" title="Change Financial Year" href="{% url 'fyd'%}">{{request.user.fyauth.year.year}}</a> </li>
+                    </ul>
+                </div>
+          
+             
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- User profile -->
+              
+               
+                <!-- End User profile text-->
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="nav-small-cap">Main</li>
+                        <li> <a class="waves-effect waves-dark" href="{% url 'dlsheet' %}"><i class="mdi mdi-table"></i><span class="hide-menu">Daily Sheet</span></a>
+
+                        <li class="nav-small-cap">Information</li>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-laptop-windows"></i><span class="hide-menu">Accounts Info </span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{% url 'groups' %}">Groups</a></li>
+                                <li><a href="{% url 'ledgers' %}">Ledgers</a></li>
+                                <li><a href="{% url 'cost_centers' %}">Cost Centers</a></li>
+                           
+            
+                            
+                            </ul>
+                        </li>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-database"></i><span class="hide-menu">Inventory Info</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{% url 'stock' %}"">Stock Items</a></li>
+                                <li><a href="{% url 'warehouse' %}">Warehouses</a></li>
+                    
+                            </ul>
+                        </li>
+                       
+                    
+                        <li class="nav-devider"></li>
+                        <li class="nav-small-cap">Vouchers</li>
+
+                        <li> <a class="waves-effect waves-dark" href="{% url 'vouchers' %}"><i class="mdi mdi-table"></i><span class="hide-menu">Accounting</span></a>
+    
+                        </li>
+                        <li> <a class="waves-effect waves-dark" href="{% url 'invoice' %}"><i class="mdi mdi-table"></i><span class="hide-menu">Inventory</span></a>
+
+                        
+                        <li class="nav-devider"></li>
+                        <li class="nav-small-cap">Reports</li>
+
+                        <li> <a class="waves-effect waves-dark" href="{% url 'balancesheet' %}"><i class="mdi mdi-table"></i><span class="hide-menu">Balance Sheet</span></a>
+                            <li> <a class="waves-effect waves-dark" href="{% url 'pnl' %}"><i class="mdi mdi-table"></i><span class="hide-menu">Profit and Loss</span></a>
+
+                 
+                    </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+            <!-- Bottom points-->
+            <div class="sidebar-footer">
+                <!-- item--><a href="{% url 'cd'%}" class="link" data-toggle="tooltip" title="Change Company"><i class="mdi mdi-domain"></i></a>
+                <!-- item--><a href="{% url 'fyd'%}" class="link" data-toggle="tooltip" title="Change Financial Year"><i class="mdi mdi-calendar"></i></a>
+                <!-- item--><a href="{% url 'logout'%}" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a> </div>
+            <!-- End Bottom points-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+            {% block content %}
+    {% endblock %}
+
+
+   
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{% static 'assets/plugins/jquery/jquery.min.js' %}"></script>
+    <script src="http://malsup.github.io/jquery.form.js"></script> 
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{% static 'assets/plugins/bootstrap/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{% static 'js/jquery.slimscroll.js' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static 'js/waves.js' %}"></script>
+    <!--Menu sidebar -->
+    <script src="{% static 'js/sidebarmenu.js' %}"></script>
+    <!--stickey kit -->
+    <script src="{% static 'assets/plugins/sticky-kit-master/dist/sticky-kit.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/sparkline/jquery.sparkline.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/sparkline/jquery.sparkline.min.js' %}"></script>
+    <!--Custom JavaScript -->
+    <script src="{% static 'js/custom.min.js' %}"></script>
+    <script src="{% static 'assets/plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+
+
+
+
+
+<script>
+    $('#example23').DataTable({
+        "displayLength": 20,
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+    </script>
+<script>
+        $('#example223').DataTable({
+            "displayLength": 20,
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        });
+        </script>
+
+<script>
+    $('#example24').DataTable({
+        "displayLength": 20,
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+    </script>
+
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="{% static 'assets/plugins/styleswitcher/jQuery.style.switcher.js' %}"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!-- chartist chart -->
+<script>
+$('custom_helo').keypress(function(e) {
+    var a = [];
+    var k = e.which;
+
+    for (i = 48; i < 58; i++)
+        a.push(i);
+
+    if (!(a.indexOf(k)>=0))
+        e.preventDefault();
+});
+
+
+</script>
+
+<script>
+    let birdForm = document.querySelectorAll(".bird-form")
+    let container = document.querySelector("#form-container")
+    let addButton = document.querySelector("#add-form")
+    let totalForms = document.querySelector("#id_receipt-TOTAL_FORMS")
+    let hrd = document.querySelector("#hrd")
+
+    let formNum = birdForm.length-1
+    addButton.addEventListener('click', addForm)
+
+    function addForm(e){
+        e.preventDefault()
+
+        let newForm = birdForm[0].cloneNode(true)
+        let formRegex = RegExp(`receipt-(\\d){1}-`,'g')
+
+        formNum++
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `receipt-${formNum}-`)
+        container.insertBefore(newForm, hrd)
+        
+        totalForms.setAttribute('value', `${formNum+1}`)
+    }
+</script>
+
+<script>
+    let purchaseForm = document.querySelectorAll(".purchase-form")
+    let purchasecontainer = document.querySelector("#purchase-container")
+    let purchaseaddButton = document.querySelector("#add-purchase")
+    let purchasetotalForms = document.querySelector("#id_purchase-TOTAL_FORMS")
+    let purchasehrd = document.querySelector("#hrfd")
+
+    let purchaseformNum = purchaseForm.length-1
+    purchaseaddButton.addEventListener('click', purchaseaddForm)
+
+    function purchaseaddForm(e){
+        e.preventDefault()
+
+        let purchasenewForm = purchaseForm[0].cloneNode(true)
+        let purchaseformRegex = RegExp(`purchase-(\\d){1}-`,'g')
+
+        purchaseformNum++
+        purchasenewForm.innerHTML = purchasenewForm.innerHTML.replace(purchaseformRegex, `purchase-${purchaseformNum}-`)
+        purchasecontainer.insertBefore(purchasenewForm, purchasehrd)
+        
+        purchasetotalForms.setAttribute('value', `${purchaseformNum+1}`)
+    }
+</script>
+
+<script>
+$('#button-id').click(function() {
+  $('.blueForms').ajaxSubmit();
+});
+
+</script>
+
+</body>
+
+</html>
+
+{% elif not request.user.cauth %}
+
+<meta http-equiv="refresh" content="0; URL={% url 'cauth'%}" />
+
+{% elif not request.user.fyauth %}
+
+<meta http-equiv="refresh" content="0; URL={% url 'fyauth'%}" />
+
+{% endif %}

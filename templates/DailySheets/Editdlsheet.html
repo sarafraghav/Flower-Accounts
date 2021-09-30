@@ -1,0 +1,129 @@
+ <!-- ============================================================== -->
+ {% extends 'base.html' %}
+{% load static %}
+{% block content %}  
+ <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor">Daily Sheet for {{stock.Date}}</h3>
+          
+            </div>
+            <div class="col-md-7 col-4 align-self-center">
+                <div class="d-flex m-t-10 justify-content-end">
+                   
+                 
+                    
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+      
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <a style='color: white;' type="button" class="pull-right btn waves-effect waves-light btn-success" href="{% url 'dlisheet' stock.id %}">Add</a>
+                        <h2 class="m-0 font-weight-bold text- ">Transactions</h2>
+                        <div class="table-responsive m-t-40">
+                            <table id="example223" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                      
+                                       
+                                          <th style='text-transform: uppercase;'>Money Account</th>
+                                          <th style='text-transform: uppercase;'>Cost Center</th>
+                                          <th style='text-transform: uppercase;'>Amount</th>
+                                          <th style='text-transform: uppercase;'>Date</th>
+                                          <th style='text-transform: uppercase;'>Type</th>
+                                     
+                                           
+                                    </tr>
+                                   </thead>
+                                   <tfoot>
+                                       <tr>
+                                    
+                                           
+                                           <th style='text-transform: uppercase;'>Money Account</th>
+                                           <th style='text-transform: uppercase;'>Cost Center</th>
+                                           <th style='text-transform: uppercase;'>Amount</th>
+                                           <th style='text-transform: uppercase;'>Date</th>
+                                           <th style='text-transform: uppercase;'>Type</th>
+                                         
+                                             
+       
+                                        </tr>
+                                   </tfoot>
+                                   <tbody>
+   
+                                       {% for item in stock.Purchases.all %}
+                                       <tr>
+                                
+                                           <td><a href='/Purchase/edit/{{ item.id }}/'>{{ item.money_account.Name }}</a></td>
+                                           <td>{{ item.Cost_Center.Name }}</td>
+                                           <td>{{ item.Amount }}</td>
+                                           <td>{{ item.Date }}</td>
+                                           <td>Payment</td>
+                                     
+                                       
+                                       </tr>
+                                           {% endfor %}
+
+                                           {% for item in stock.Receipts.all %}
+                                           <tr>
+                                    
+                                               <td><a href='/Receipt/edit/{{ item.id }}/'>{{ item.money_account.Name }}</a></td>
+                                               <td>{{ item.Cost_Center.Name }}</td>
+                                               <td>{{ item.Amount }}</td>
+                                               <td>{{ item.Date }}</td>
+                                               <td>Receipt</td>
+                               
+                                         
+                                           
+                                           </tr>
+                                               {% endfor %}
+                                   </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+          
+               
+            </div>
+        </div>
+        <!-- Row -->
+       
+        <!-- Row -->
+        <!-- Row -->
+      
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <footer class="footer"> © 2021 Payal Exim Concern </footer>
+        <!-- ============================================================== -->
+    </div>
+</div>
+
+
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+{% endblock %}

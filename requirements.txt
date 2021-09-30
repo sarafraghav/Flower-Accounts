@@ -1,0 +1,11 @@
+asgiref==3.3.1
+Django==3.1.5
+django-compat==1.0.15
+gunicorn==20.0.4
+psycopg2==2.8.6
+pytz==2020.5
+six==1.15.0
+sqlparse==0.4.1
+whitenoise==5.2.0
+dj-database-url
+psycopg2-binary

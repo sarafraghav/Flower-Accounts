@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+    {% block content %}  
+
+    
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+     {{ sidebar|safe}}
+
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+               
+        <nav class="navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+            <center>
+<h1 class="h3 mb-2 text-gray-800" style="padding-top: 1.5%;" >Debtors</h1>
+</center>
+</nav>
+
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+             
+                   
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Current Debtors</h6>
+                     
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="table_id" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Address</th>
+                                            <th>Phone</th> 
+                                            <th>Net Balance</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Address</th>
+                                            <th>Phone</th>
+                                            <th>Net Balance</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+
+                                        {% for item in stock %}
+                                        <tr>
+                                            <td>{{ item.id }}</td>
+                                            <td><a href='/customer/edit/{{ item.id }}/'>{{ item.Name }}</a></td>
+                                            <td>{{ item.Address }}</td>
+                                            <td>{{ item.Phone }}</td>
+                                            <td>{{ item.NetBalance }}</td>
+                                      
+                                        
+                                        </tr>
+                                            {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Stock Management</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+</body>
+{% endblock %}
+
+
+
+
+        
+</html>

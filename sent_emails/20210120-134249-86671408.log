@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: sarafraghav1@gmail.com
+To: sarafraghav00@gmail.com
+Date: Wed, 20 Jan 2021 07:57:49 -0000
+Message-ID: <161112946912.23784.812910208309271166@ASUS>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/reset/Mg/ags0rd-dec8aac97a86a1805c482fc2aba8cde4/
+
+Your username, in case you’ve forgotten: abcd
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

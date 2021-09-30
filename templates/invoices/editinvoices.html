@@ -1,0 +1,215 @@
+
+
+
+ <!-- ============================================================== -->
+ {% extends 'base.html' %}
+{% load static %}
+{% block content %}  
+ <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="row page-titles">
+            <div class="col-md-5 col-8 align-self-center">
+                <h3 class="text-themecolor">Invoice Maker</h3>
+          
+            </div>
+            <div class="col-md-7 col-4 align-self-center">
+                <div class="d-flex m-t-10 justify-content-end">
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow mb-4">
+                  
+                    <div class="card-body">
+                        <h6 class="m-0 font-weight-bold text- ">Edit Invoice</h6>
+                        {{form}}
+                    
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <table id="example23" class="table table-bordered" width="100%" cellspacing="0">
+
+                              <thead>
+                                  <tr>
+                                  
+                                      <th>ID</th>
+                                      <th>Name</th>
+                                      <th>Model</th>
+                                      <th>Size</th>
+                                      <th>Quantity</th>
+                                      <th>Price</th>
+                                      <th>Warehouse</th>
+                                    
+                                  </tr>
+                              </thead>
+                              <tfoot>
+                                  <tr>
+                                      
+                                      <th>ID</th>
+                                      <th>Name</th>
+                                      <th>Model</th>
+                                      <th>Size</th>
+                                      <th>Quantity</th>
+                                      <th>Price</th>
+                                      <th>Warehouse</th>
+                                      
+                                  </tr>
+                              </tfoot>
+                              <tbody>
+
+                                  {% for ite in stock %}
+                         
+                                      
+                                  <tr>
+
+                                      <td><input style="width: 70%;" readonly name="ID_{{ ite.id }}" value="{{ ite.stock_id }}"  ></td>
+                                      <td><input style="width: 70%;" readonly  name="Name_{{ ite.id }}" value="{{ ite.Name }}"  ></td>
+                                      <td><input style="width: 70%;"  readonly name="Model_{{ ite.id }}"  value="{{ ite.Model }}"  ></td>
+                                      <td><input style="width: 70%;"  name="Size_{{ ite.id }}"  value="{{ ite.Size }}"  ></td>
+                                      <td><input type='number'style="width: 70%;"  name="Quantity_{{ ite.id }}" value = "{{ ite.Quantity }}" ></td>
+                                      <td><input type='number' style="width: 70%;"  name="Price_{{ ite.id }}" value="{{ ite.Price }}" ></td>
+                                      <td><input style="width: 70%;" readonly name="Warehouse_{{ ite.id }}" value="{{ ite.Warehouse }}"  ></td>
+                                  
+        
+                                    
+                                  </tr>
+                                 
+                                  {% endfor %}
+                             
+                              </tbody>
+
+  
+                             
+                              
+                          </table>
+
+
+                          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                              <button class='d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm' type="submit" value='save' name='save'>Save</button>
+                          
+                          
+                            </div>
+                            <button class='d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm' type="submit" value='finalize' name='save'>Finalize</button>
+                        
+                      </form>     
+                     <br>
+                        <h3 class="m-0 text- ">Final :  {{item.amount}}   </h3>    
+                        <h3 class="m-0 text- "> Customer : {{item.Cost_Center.Name}} </h3>     
+                    </div>
+                </div>
+                
+          
+               
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card shadow mb-4">
+                  
+                    <div class="card-body">
+                        <h2 class="m-0 font-weight-bold text- ">Stock</h2>
+                        <div class="table-responsive m-t-40">
+                            <table class="table table-bordered" id="" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Model</th>
+                                        <th>Size</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Color</th>
+                                        <th>Warehouse</th>
+                                        <th>Add</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Model</th>
+                                        <th>Size</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Color</th>
+                                        <th>Warehouse</th>
+                                        <th>Add</th>
+                                        
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+
+                                    {% for item in items %}
+                                    <form action="" method="POST">
+
+                                        {% csrf_token %}
+                                    <tr>
+                                       
+
+                                        <td><textarea style="width: 70%;" readonly name="ID"> {{ item.id }}</textarea></td>
+                                        <td><textarea readonly name="Name"> {{ item.Name }}</textarea></td>
+                                        <td><textarea readonly name="Model"> {{ item.Model }}</textarea></td>
+                                        <td><textarea readonly name="Size"> {{ item.Size }}</textarea></td>
+                                        <td><textarea readonly name="Quantity"> {{ item.Quantity }}</textarea></td>
+                                        <td><textarea readonly name="Price" > {{ item.Price }}</textarea></td>
+                                        <td><textarea readonly name="Color"> {{ item.Color }}</textarea></td>
+                                        <td><textarea readonly name="Warehouse"> {{ item.Warehouse.name }}</textarea></td>
+                                        <td><button type="submit" name='save' value='add'>Add</button></td>
+                                    </tr>
+                                    </form>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                              
+                            </form>                        
+                    </div>
+                </div>
+                
+          
+               
+            </div>
+        </div>
+        <!-- Row -->
+       
+        <!-- Row -->
+        <!-- Row -->
+      
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Right sidebar -->
+        <!-- ============================================================== -->
+        <!-- .right-sidebar -->
+        <footer class="footer"> © 2021 Payal Exim Concern </footer>
+        <!-- ============================================================== -->
+    </div>
+</div>
+
+
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+{% endblock %}

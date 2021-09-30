@@ -25,7 +25,7 @@ SECRET_KEY = '(^9+q)0awz#xyc5@5-ra7=^gicp6h&mdt5)5tq8r-698=ug$w6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','herokudjangoapp.herokuapp.com','accounts.flowerapps.io']
+ALLOWED_HOSTS = ['127.0.0.1','floweraccounts.herokuapp.com','accounts.flowerapps.io']
 
 
 # Application definition

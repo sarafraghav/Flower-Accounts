@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://flowerapps.io"><img src="https://i.ibb.co/swZYjVj/image-2021-11-19-194058.png" alt="OpenSourceAccounting" border="0"></a>
+<a href="https://flowerapps.io"><img src="https://github.com/sarafraghav/Flower-Accounts/blob/master/staticfiles/Screenshot%20from%202021-11-19%2019-44-05.png" alt="OpenSourceAccounting" border="0"></a>
 <h1 align="center">Flower Accounting</h1>
 <h4 align="center">Invoicing, Subscription Management and Accounting, for Free.</h4>
 

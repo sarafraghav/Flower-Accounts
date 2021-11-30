@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(^9+q)0awz#xyc5@5-ra7=^gicp6h&mdt5)5tq8r-698=ug$w6'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -139,9 +140,9 @@ ADMIN_MEDIA_PREFIX = '/staticfiles/admin/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
 MAILER_EMAIL_BACKEND = EMAIL_BACKEND  
-EMAIL_HOST = 'smtp.sendgrid.net'  
-EMAIL_HOST_PASSWORD = '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'
-EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST = 'smtp-relay.sendinblue.com'  
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = 'sarafraghav4@gmail.com'
 EMAIL_PORT = 587  
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'sarafraghav1@gmail.com'

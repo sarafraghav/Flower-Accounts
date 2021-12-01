@@ -52,7 +52,6 @@ class adminin():
             user = form.save(commit=False)
             user.is_active = False
             user.save()
-            print(request.POST['company'])
             c = Company(name = request.POST['company'], user=user)
             c.save()
             adminin.default_creator(user,c)
@@ -68,7 +67,7 @@ class adminin():
             email = EmailMessage(
                 mail_subject, message, to=[to_email]
             )
-            email.send()
+            email.send(fail_silently=False)
             return HttpResponse('Please confirm your email address to complete the registration')
     else:
         form = SignUpForm()

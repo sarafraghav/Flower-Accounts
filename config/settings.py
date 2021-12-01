@@ -128,7 +128,7 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login' 
 LOGIN_URL    = 'login'
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'config.storage.CompressedManifestStaticFilesStorage'
 
 
 STATICFILES_DIRS = [

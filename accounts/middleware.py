@@ -23,10 +23,11 @@ class lauthMiddleware(MiddlewareMixin):
     def process_view(self, request, view_func, view_args, view_kwargs):
         # This code is executed just before the view is called
        if request.user.is_authenticated:
-        if not fyauth.objects.filter(user=request.user).exists() and not (view_func == views.administrative.fauth or view_func == views.administrative.coauth):
-          return HttpResponse("<meta http-equiv='refresh' content='0; URL=/fyauth' />")
-        if not cauth.objects.filter(user=request.user).exists() and not (view_func == views.administrative.fauth or view_func == views.administrative.coauth):
+        if not cauth.objects.filter(user=request.user).exists() and not (view_func == views.administrative.fauth or view_func == views.administrative.coauth or view_func == views.administrative.addcompany or view_func == views.administrative.addfy):
             return HttpResponse("<meta http-equiv='refresh' content='0; URL=/cauth' />")
+        if not fyauth.objects.filter(user=request.user).exists() and not (view_func == views.administrative.fauth or view_func == views.administrative.coauth or view_func == views.administrative.addcompany or view_func == views.administrative.addfy):
+          return HttpResponse("<meta http-equiv='refresh' content='0; URL=/fyauth' />")
+        
        #print('helo')
     def process_exception(self, request, exception):
         # This code is executed if an exception is raised
